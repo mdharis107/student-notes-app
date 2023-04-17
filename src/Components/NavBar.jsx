@@ -14,16 +14,18 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  useColorMode,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 
 const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box bg={useColorModeValue("gray.100", "gray.900")} px={10}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -39,7 +41,6 @@ const NavBar = () => {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-             
               <Box>
                 <Link to="/">Home</Link>
               </Box>
@@ -54,15 +55,9 @@ const NavBar = () => {
               </Box>
             </HStack>
           </HStack>
-          <Flex alignItems={"center"}>
-            <Button
-              variant={"solid"}
-              colorScheme={"teal"}
-              size={"sm"}
-              mr={4}
-              leftIcon={<AddIcon />}
-            >
-              Action
+          <Flex gap={5} alignItems={"center"}>
+            <Button w={"30px"} onClick={toggleColorMode}>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </Button>
             <Menu>
               <MenuButton
@@ -73,7 +68,7 @@ const NavBar = () => {
                 minW={0}
               >
                 <Avatar
-                  size={"sm"}
+                  size={"md"}
                   src={
                     "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
                   }
@@ -92,7 +87,7 @@ const NavBar = () => {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-            <Box>
+              <Box>
                 <Link to="/">Home</Link>
               </Box>
               <Box>
@@ -108,8 +103,6 @@ const NavBar = () => {
           </Box>
         ) : null}
       </Box>
-
-      <Box p={4}>Main Content Here</Box>
     </>
   );
 };
