@@ -39,9 +39,7 @@ const NavBar = () => {
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {/* {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))} */}
+             
               <Box>
                 <Link to="/">Home</Link>
               </Box>
@@ -94,9 +92,18 @@ const NavBar = () => {
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {/* {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))} */}
+            <Box>
+                <Link to="/">Home</Link>
+              </Box>
+              <Box>
+                <Link to="/about">About</Link>
+              </Box>
+              <Box>
+                <Link to="/contact">Contact</Link>
+              </Box>
+              <Box>
+                <Link to="/login">Login</Link>
+              </Box>
             </Stack>
           </Box>
         ) : null}
