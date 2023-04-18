@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const ProductCard = () => {
-  return (
-    <div>ProductCard</div>
-  )
-}
+const ProductCard = ({ id, title, desc, img, price }) => {
 
-export default ProductCard
+  return <div>ProductCard</div>;
+};
+
+export default ProductCard;
+
